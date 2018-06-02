@@ -2,14 +2,13 @@
 from collections import OrderedDict
 
 import sys
+from imp import reload
 
 reload(sys)
-sys.setdefaultencoding('utf-8')
-
 
 def calculate_frequency(div):
-    input_file = open("./" + div + "/segmented_titles.txt", "r")
-    output_file = open("./" + div + "/calculated_titles.txt", "w")
+    input_file = open("./segmented_titles/" + div + '.txt', "r")
+    output_file = open("./calculated_titles/" + div + ".txt", "w")
 
     lines = input_file.readlines()
 
@@ -24,4 +23,4 @@ def calculate_frequency(div):
     sorted_word_map = OrderedDict(sorted(word_map.items(), key=lambda x: x[1], reverse=True))
 
     for (k, v) in sorted_word_map.items():
-        output_file.write("%s: %s" % ((k.replace('\n', '')).encode('utf-8'), str(v) + '\n'))
+        output_file.write("%s: %s" % ((k.replace('\n', '')), str(v) + '\n'))

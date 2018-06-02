@@ -1,6 +1,6 @@
 def print_chinese_list(names):
     for name in names:
-        print name
+        print(name)
 
 
 def generate_urls(base_url):

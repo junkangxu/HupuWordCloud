@@ -7,10 +7,10 @@ import HupuCounter
 import HupuWordCloud
 import utils
 
-reload(sys)
-sys.setdefaultencoding("utf-8")
+from imp import reload
 
-# BASE_URL = "https://bbs.hupu.com/lakers"
+reload(sys)
+
 BASE_URL = "https://bbs.hupu.com/"
 DIVISIONS = ["vote", "nba", "10w",
              "rockets", "cavaliers", "warriors", "lakers", "spurs", "celtics",
@@ -22,11 +22,11 @@ DIVISIONS = ["vote", "nba", "10w",
 
 def crawler(div):
     template_url = BASE_URL + div
-    print "2. Start to crawl on " + template_url
+    print("2. Start to crawl on " + template_url)
 
     urls = utils.generate_urls(template_url)
 
-    filename = './' + div + '/titles.txt'
+    filename = './titles/' + div + '.txt'
 
     f = open(filename, 'w')
     for url in urls:
@@ -37,42 +37,42 @@ def crawler(div):
 
     f.close()
 
-    print '--------------------------'
+    print('--------------------------')
 
 
 def segment(div):
-    print "3. Start to segment " + div + " titles"
+    print("3. Start to segment " + div + " titles")
     HupuWordSplit.segment_titles(div)
-    print '--------------------------'
+    print('--------------------------')
 
 
 def count(div):
-    print "4. Start to count frequency " + div + " keywords"
+    print("4. Start to count frequency " + div + " keywords")
     HupuCounter.calculate_frequency(div)
-    print '--------------------------'
+    print('--------------------------')
 
 
 def create(div):
-    print "5. Start to create Word Cloud " + div
+    print("5. Start to create Word Cloud " + div)
     HupuWordCloud.create_word_cloud(div)
-    print '--------------------------'
+    print('--------------------------')
 
 
 def get_user_input():
-    print "1. Get user input:"
+    print("1. Get user input:")
     while True:
-        user_input = raw_input("    Choose a division: ")
+        user_input = input("    Choose a division: ")
         lowered_user_input = user_input.lower()
         if lowered_user_input in DIVISIONS:
-            print '--------------------------'
+            print('--------------------------')
             return lowered_user_input
         else:
-            print "    Your input is not a valid division"
+            print("    Your input is not a valid division")
 
 
 if __name__ == "__main__":
-    print "Welcome to Hupu Word Cloud"
-    print "=========================="
+    print("Welcome to Hupu Word Cloud")
+    print("==========================")
 
     division = get_user_input()
 

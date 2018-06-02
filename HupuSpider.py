@@ -1,26 +1,27 @@
+# coding:utf-8
 from bs4 import BeautifulSoup
-import urllib2
+import urllib.request as r
 
 import utils
 
 
 def download(url):
-    print '        Downloading ' + url
+    print('        Downloading ' + url)
 
     if url is None:
         return None
 
-    request = urllib2.Request(url)
+    request = r.Request(url)
     request.add_header('User-Agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) '
                                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36')
 
-    response = urllib2.urlopen(request)
+    response = r.urlopen(request)
 
     return response.read()
 
 
 def parse(url, html_content):
-    print '        Parsing ' + url
+    print('        Parsing ' + url)
 
     if url is None or html_content is None:
         return None
@@ -45,7 +46,7 @@ def get_new_data(soup):
 
 
 def crawl(url):
-    print '    Crawling ' + url
+    print('    Crawling ' + url)
     html_content = download(url)
     new_data = parse(url, html_content)
     return new_data
