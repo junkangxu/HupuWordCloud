@@ -1,6 +1,5 @@
 # coding:utf-8
 import jieba
-
 import sys
 from imp import reload
 

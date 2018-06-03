@@ -16,13 +16,12 @@ def download(url):
                                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36')
 
     response = r.urlopen(request)
-
+    
     return response.read()
 
 
 def parse(url, html_content):
     print('        Parsing ' + url)
-
     if url is None or html_content is None:
         return None
 

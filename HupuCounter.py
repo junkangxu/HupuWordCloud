@@ -6,12 +6,12 @@ from imp import reload
 
 reload(sys)
 
+
 def calculate_frequency(div):
     input_file = open("./segmented_titles/" + div + '.txt', "r")
     output_file = open("./calculated_titles/" + div + ".txt", "w")
 
     lines = input_file.readlines()
-
     word_map = {}
 
     for line in lines:
